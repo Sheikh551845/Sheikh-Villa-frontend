@@ -21,9 +21,9 @@ export default function Navbar() {
           <div className="fixed z-10 bg-opacity-30 bg-black flex justify-between items-center w-screen justify-items-center shadow-xl p-3  mt-0 "> 
      <div>
         <div className=" flex items-center">
-        <FaBuildingColumns className=' text-3xl md:text-5xl text-center'></FaBuildingColumns>
+        <FaBuildingColumns className=' text-3xl md:text-5xl text-center text-white'></FaBuildingColumns>
                               
-                                <h3 className=" text-gray-800 font-bold tracking-normal leading-tight ml-3 text-3xl md:text-4xl text-center"> Sheikh Villa</h3>
+                                <h3 className=" text-white font-bold tracking-normal leading-tight ml-3 text-3xl md:text-4xl text-center"> Sheikh Villa</h3>
                             </div>
         </div>
      <div>

@@ -1,37 +1,69 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import BannerContent from './BannerContent';
+import { useNavigate } from 'react-router-dom';
 
+const Banner = () => {
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const navigate = useNavigate();
 
-export default function Banner() {
-  const navigate=useNavigate()
+  const slideData = [
+    {
+      ID: 1,
+      image: 'https://i.ibb.co/pdv5JHQ/cyber-thum-2.jpg',
+    },
+    {
+      ID: 2,
+      image: 'https://i.ibb.co/X8rtXsr/cyber-thum-1.jpg',
+    },
+    {
+      ID: 3,
+      image: 'https://i.ibb.co/sypjc1N/ICT.jpg',
+    },
+    {
+      ID: 4,
+      image: 'https://i.ibb.co/ggrWJdg/history-2.jpg',
+    },
+  ];
 
-  const handleClick=()=>
-  {
-    navigate("/AllAssignment")
-  }
+  const nextSlide = () => {
+    const nextIndex = (currentSlide % slideData.length) + 1;
+    setCurrentSlide(nextIndex);
+  };
+
+  const prevSlide = () => {
+    const prevIndex = (currentSlide - 2 + slideData.length) % slideData.length + 1;
+    setCurrentSlide(prevIndex);
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextSlide();
+      navigate(`#slide${currentSlide}`);
+    }, 3000);
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [currentSlide, navigate, nextSlide]);
+
   return (
-    <div>
-     <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/xmdMnTY/Assignment-banner.webp)' }}>
-  <div className="hero-overlay bg-opacity-60"></div>
-  
-  <div className="hero-content text-center text-neutral-content">
-    <div className="max-w-md">
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }} // Initial state
-      animate={{ opacity: 1, scale: 1 }} // Animation state
-      exit={{ opacity: 0, scale: 0.8 }} // Exit state (optional)
-    >
-       <h1 className="mb-5 text-3xl md:text-5xl font-bold"> Assignment Assist</h1>
-      <p className="mb-5 text-sm md:text-2xl">Welcome to our friendly assignment hub, where we come together to support each other's academic journey.   Let's make our assignments the best they can be!</p>
-    </motion.div>
-    <motion.button className="btn btn-primary" onClick={handleClick} whileHover={{ scale: 1.1 }}> Get Started</motion.button>
-     
+    <div className="carousel w-full">
+      {slideData.map((slide) => (
+        <div key={slide.ID} className="carousel-item relative w-screen">
+          <div id={`slide${slide.ID}`}>
+            <BannerContent src={slide.image}></BannerContent>
+          </div>
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href={`#slide${currentSlide}`} className="btn btn-circle" onClick={prevSlide}>
+              ❮
+            </a>
+            <a href={`#slide${currentSlide}`} className="btn btn-circle" onClick={nextSlide}>
+              ❯
+            </a>
+          </div>
+        </div>
+      ))}
     </div>
-  </div>
-</div>
+  );
+};
 
-    </div>
-
-  )
-}
+export default Banner;
