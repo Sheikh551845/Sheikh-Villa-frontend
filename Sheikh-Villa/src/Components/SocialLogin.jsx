@@ -7,11 +7,11 @@ import { AuthContext } from './AuthProvider';
 
 export default function SocialLogin() {
     const navigate = useNavigate()
-    const {  googleLogin } = useContext(AuthContext);
+    const {  googleSignIn } = useContext(AuthContext);
 
 
     const handleSocialLogin = () => {
-        googleLogin()
+        googleSignIn()
             .then(res => {
                 toast.success('User logged in successfully');
                 navigate('/')
