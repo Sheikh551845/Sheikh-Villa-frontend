@@ -11,7 +11,7 @@ export default function BannerContent(src) {
     navigate("/")
   }
 
-  console.log(src.src)
+  
   return (
     <div>
      <div className="hero min-h-screen w-screen" style={{ backgroundImage: `url(${src.src})` }}>

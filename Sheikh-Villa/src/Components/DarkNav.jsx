@@ -25,72 +25,20 @@ export default function DarkNav() {
     Home
   </li>
               </NavLink>
+              <NavLink
+                to="/Apartment"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "underline" : ""}
+              >
+                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
+     
+    Apartment
+  </li>
+              </NavLink>
   
   
         
-              <NavLink
-                to="/AllAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      All Assig.
-  </li>
-              </NavLink>
-              <NavLink
-                to="/MyAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      My Assig.
-  </li>
-              </NavLink>
-  
-  
-              <NavLink
-                to="/CreateAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      Create Assig.
-  </li>
-              </NavLink>
-  
-
-  
-              <NavLink
-                to="/SubmittedAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      Submitted Assig.
-  </li>
-              </NavLink>
-  
-  
-      
-    
-      
-      
-          <NavLink
-                to="/Registration"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? " underline" : ""
-                }
-              >
-               <li className="cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 text-white tracking-normal transition duration-150 ease-in-out">
-      
-      Registration
-  </li>
-              </NavLink>
-      
+              
      
     </ul>
   </div>
@@ -118,71 +66,20 @@ export default function DarkNav() {
     Home
   </li>
               </NavLink>
+              <NavLink
+                to="/Apartment"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "underline" : ""}
+              >
+                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
+     
+    Apartment
+  </li>
+              </NavLink>
   
   
         
-              <NavLink
-                to="/AllAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      All Assig.
-  </li>
-              </NavLink>
-              <NavLink
-                to="/MyAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      My Assig.
-  </li>
-              </NavLink>
-  
-  
-              <NavLink
-                to="/CreateAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      Create Assig.
-  </li>
-              </NavLink>
-  
-
-  
-              <NavLink
-                to="/SubmittedAssignment"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "underline" : ""}
-              >
-                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
-     
-      Submitted Assig.
-  </li>
-              </NavLink>
-  
-  
-      
-    
-      
-      
-          <NavLink
-                to="/Registration"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? " underline" : ""
-                }
-              >
-               <li className="cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 text-white tracking-normal transition duration-150 ease-in-out">
-      
-      Registration
-  </li>
-              </NavLink>
+              
       
      
       </ul>
