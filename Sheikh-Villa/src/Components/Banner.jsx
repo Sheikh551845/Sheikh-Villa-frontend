@@ -9,19 +9,19 @@ const Banner = () => {
   const slideData = [
     {
       ID: 1,
-      image: 'https://i.ibb.co/pdv5JHQ/cyber-thum-2.jpg',
+      image: 'https://i.ibb.co/tXrDn8w/apart-2.png',
     },
     {
       ID: 2,
-      image: 'https://i.ibb.co/X8rtXsr/cyber-thum-1.jpg',
+      image: 'https://i.ibb.co/McGM6fD/apart-3.png',
     },
     {
       ID: 3,
-      image: 'https://i.ibb.co/sypjc1N/ICT.jpg',
+      image: 'https://i.ibb.co/64GPpjs/apart-4.png',
     },
     {
       ID: 4,
-      image: 'https://i.ibb.co/ggrWJdg/history-2.jpg',
+      image: 'https://i.ibb.co/G7dwPTc/apart-6.png',
     },
   ];
 

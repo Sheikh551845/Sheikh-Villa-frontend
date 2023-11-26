@@ -8,7 +8,7 @@ export default function DarkNav() {
     <div className=" fixed z-10 bg-opacity-30 bg-black  flex justify-between items-center mt-1 justify-items-center shadow-xl p-3  border-white w-screen"> 
     <div className="mr-10 flex flex-col items-center">
                             <img src="https://i.ibb.co/fvRQ7k7/Pngtree-vector-assignment-icon-4274708.png" className=" h-8 w-8 md:h-16 md:w-20 rounded-full bg-white" alt="" />
-                                <h3 className=" text-white font-bold tracking-normal leading-tight ml-3 text-sm md:text-normal ">Sheikh Villa</h3>
+                                <h3 className=" text-white font-bold tracking-normal leading-tight ml-3 text-sm md:text-normal ">SHEIKH VILLA</h3>
                             </div>
    <div>
    <div className="hidden lg:block">

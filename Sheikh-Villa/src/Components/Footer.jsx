@@ -9,7 +9,7 @@ export default function Footer() {
         <div className=" flex items-center">
         <FaBuildingColumns className='mr-3 text-3xl md:text-4xl text-center'></FaBuildingColumns>
                               
-                                <h3 className=" text-gray-800 font-bold tracking-normal leading-tight ml-3 text-3xl md:text-4xl text-center"> Sheikh Villa</h3>
+                                <h3 className=" text-gray-800 font-bold tracking-normal leading-tight ml-3 text-3xl md:text-4xl text-center"> SHEIKH VILLA</h3>
                             </div>
         </div>
         <div className="flex flex-wrap sm:gap-10 gap-8 items-center justify-center mt-8">
@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
         <div className="flex items-center mt-6">
             <p className="text-base leading-4 text-black">
-                2023 <span className="font-semibold">Sheikh Villa</span>
+                2023 <span className="font-semibold">SHEIKH VILLA</span>
             </p>
             <div className="border-l border-white pl-2 ml-2">
                 <p className="text-base leading-4 text-black">Inc. All righys reserved</p>
