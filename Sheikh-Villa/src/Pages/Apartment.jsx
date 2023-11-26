@@ -23,12 +23,14 @@ const[numPages,setNumPages]=useState()
 const[currentPage, setCurrentPage]=useState(1);
 const[typedData,setTypedData]=useState(AllApartment);
 
-useEffect(() => {
+const auto=()=>{useEffect(() => {
   setTypedData(AllApartment);
   setAllData(AllApartment);
   setItems(AllApartment.length);
   setNumPages([1]);
-}, [AllApartment])
+}, [AllApartment])}
+
+auto()
 
 
 
@@ -107,11 +109,12 @@ else{
 
 
   return (
-    <div className="p-2 md:p-5  pt-20 md:pt-32 mb-10">
+    <div className="pt-20 md:pt-32 mb-10">
 
-<div className='mb-5 md:mb-10'>
+<div className=' '>
 <ComponentTitle Title={"All Apartments"}></ComponentTitle>
 </div>
+<div className='p-2 md:p-7 lg:p-10 pt-20'>
 <div className="flex  justify-end mb-5 ">
 <div className="flex flex-col items-center justify-center mr-3">
             <label className="label">
@@ -136,7 +139,7 @@ else{
 
 {
 loading ? <Spinner></Spinner>:
-<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+<div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
 {
   AllData?.map((Apartment, index) => (
   <ApartmentCard key={index} Apartment={Apartment}></ApartmentCard>
@@ -174,7 +177,7 @@ loading ? <Spinner></Spinner>:
       </select>
             </div>
   </div>
-
+  </div>
 
     </div>
   )

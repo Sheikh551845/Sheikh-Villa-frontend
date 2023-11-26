@@ -1,6 +1,49 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { motion } from 'framer-motion';
+import { AuthContext } from './AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
+import Swal from 'sweetalert2'
 
 export default function ApartmentCard(Apartment) {
+  const {user}=useContext(AuthContext)
+  const axiosPublic = useAxiosPublic();
+ 
+  const navigate=useNavigate()
+
+  const handleAgreement = () => {
+    if (!user) {
+      navigate('/Login');
+      toast.error('Please login ');
+    } else {
+      const info = {
+        UserName: user.displayName,
+        UserEmail: user.email,
+        floor_no: Apartment.Apartment.floor_no,
+        rent: Apartment.Apartment.rent,
+        apartment_no: Apartment.Apartment.apartment_no,
+        block_name: Apartment.Apartment.floor_no,
+        status: 'pending',
+      };
+
+      try {
+        const res =  axiosPublic.post('/Agreement', info)
+       .then(data=>{
+       
+        if (data.data.insertedId) {
+          Swal.fire('Submitted', ' Agreement has been submitted.', 'success');
+        }
+       })
+        
+      } catch (error) {
+        console.error('Error creating agreement:', error);
+      }
+     
+    }
+  };
+  
 
   return (
     <div className='col-span-1 cursor-pointer group '>
@@ -25,16 +68,18 @@ export default function ApartmentCard(Apartment) {
             src={`${Apartment.Apartment.apartment_image}`}
             alt='Room'
           />
-
-          <div
+ {Apartment.Apartment.status!="rented" &&
+          <motion.div
             className='
             absolute
             top-3
             right-3
           '
+          whileHover={{ scale: 1.1 }}
           >
-            <button className='btn bg-green'>Agreement</button>
-          </div>
+            <button className='bg-green-500 p-4 rounded-lg' onClick={handleAgreement}>Agreement</button>
+          </motion.div>
+}
           {Apartment.Apartment.status=="rented" &&
             <div
               className='
@@ -46,7 +91,7 @@ export default function ApartmentCard(Apartment) {
                items-center gap-2
                       '
             >
-              <p className="text-red-500 font-bold text-xl">Rented</p>
+              <p className="text-red-600 font-bold text-xl">Rented</p>
               <img src="https://i.ibb.co/4VLWhXp/pngwing-com.png" alt=""  className="w-10 h-10"/>
 
             </div>

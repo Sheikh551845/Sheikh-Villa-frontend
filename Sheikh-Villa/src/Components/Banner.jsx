@@ -53,10 +53,10 @@ const Banner = () => {
             <BannerContent src={slide.image}></BannerContent>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href={`#slide${currentSlide}`} className="btn btn-circle" onClick={prevSlide}>
+            <a href={`#slide${currentSlide}`} className="bg-opacity-50 p-3 md:p-6 rounded-full text-xs  md:text-xl bg-black text-white" onClick={prevSlide}>
               ❮
             </a>
-            <a href={`#slide${currentSlide}`} className="btn btn-circle" onClick={nextSlide}>
+            <a href={`#slide${currentSlide}`} className="bg-opacity-50 p-3 md:p-6 rounded-full text-xs  md:text-xl bg-black text-white" onClick={nextSlide}>
               ❯
             </a>
           </div>

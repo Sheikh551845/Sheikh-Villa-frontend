@@ -12,11 +12,16 @@ export default function Home() {
      <div className="w-full "> 
      <ComponentTitle Title={"About SHEIKH VILLA"}></ComponentTitle>
      </div>
+     <div className="w-full ">
      <AboutUs></AboutUs>
+     </div>
+     
      <div className="w-full "> 
      <ComponentTitle Title={"Our Location"}></ComponentTitle>
      </div>
+     <div className="w-full ">
     <Location></Location>
+    </div>
     
     </div>
   )

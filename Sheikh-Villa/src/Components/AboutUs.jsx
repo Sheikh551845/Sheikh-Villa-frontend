@@ -3,7 +3,7 @@ import React from 'react'
 export default function AboutUs() {
   return (
     <div>
-    <div className="2xl:mx-auto 2xl:container 2xl:px-20 px-6 ">
+    <div className="mx-auto 2xl:container 2xl:px-20 px-6 ">
         <div className="flex md:flex-row flex-col-reverse md:items-stretch items-center justify-center">
             <div className="md:py-20 xl:w-1/2 sm:w-1/2 lg:mr-20 md:mr-6 flex flex-col md:items-end items-center justify-center xl:mr-28">
                 <div className="flex flex-col items-center justify-center">
