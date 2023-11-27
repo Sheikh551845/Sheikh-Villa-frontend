@@ -10,22 +10,24 @@ import useAxiosPublic from '../Hooks/useAxiosPublic';
 export default function ApartmentCard(Apartment) {
   const {user,AllAgreement}=useContext(AuthContext)
   const axiosPublic = useAxiosPublic();
+  const [clicked,setClicked]=useState(false)
 
  
  
-  const navigate=useNavigate()
+  const navigate =useNavigate()
 
  
 
   const handleAgreement = async () => {
-    console.log('Starting handleAgreement function');
+    setClicked(true)
+    
     
     if (!user) {
-      console.log('User not logged in. Redirecting to login page.');
+    
       navigate('/Login');
       toast.error('Please login ');
     } else {
-      console.log('User logged in. Proceeding with agreement submission.');
+   
       
       const info = {
         UserName: user.displayName,
@@ -37,31 +39,32 @@ export default function ApartmentCard(Apartment) {
         status: 'pending',
       };
       
-      console.log('Agreement Info:', info);
+   
       
       const findA = AllAgreement?.find(Agreement => Agreement.apartment_no == info.apartment_no);
-  
+    
       try {
-        if (findA) {
-          console.log('This agreement already submitted. Displaying error toast.');
-          toast.error('This agreement already submitted');
-        } else {
-          console.log('No previous agreement found. Submitting new agreement.');
+        if (!findA) {
+
   
           const res = await axiosPublic.post('/Agreement', info);
-          console.log('Agreement submission response:', res);
+         
   
           if (res.data.insertedId) {
-            console.log('Agreement submitted successfully. Showing success message.');
+           
             Swal.fire('Submitted', ' Agreement has been submitted.', 'success');
+           
           }
+          
+        } else {
+        
+          toast.error('This agreement already submitted');
         }
       } catch (error) {
-        console.error('Error creating agreement:', error);
+       
       }
     }
-  
-    console.log('End of handleAgreement function');
+   
   };
   
   
@@ -90,6 +93,7 @@ export default function ApartmentCard(Apartment) {
             alt='Room'
           />
  {Apartment.Apartment.status!="rented" &&
+          
           <motion.div
             className='
             absolute
@@ -98,7 +102,7 @@ export default function ApartmentCard(Apartment) {
           '
           whileHover={{ scale: 1.1 }}
           >
-            <button className='bg-green-500 p-4 rounded-lg' onClick={handleAgreement}>Agreement</button>
+           {clicked?<button className='bg-gray-500 p-4 rounded-lg text-black' onClick={handleAgreement} disabled>Submitted</button>:<button className='bg-green-500 p-4 rounded-lg' onClick={handleAgreement}>Agreement</button>} 
           </motion.div>
 }
           {Apartment.Apartment.status=="rented" &&

@@ -42,7 +42,7 @@ export default function Registration() {
         'name': name,
         'email': email,
         'photo': Photo,
-        'Role': "User"
+        'role': "user"
        }
          
       

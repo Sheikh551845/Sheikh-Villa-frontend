@@ -5,6 +5,8 @@ import ErrorPage from "./Pages/ErrorPage";
 import Login from "./Pages/Login";
 import Registration from "./Pages/Registration";
 import Apartment from "./Pages/Apartment";
+import DashboardLayout from "./Components/Dashbord/DashbordLayout";
+import PrivateRoute from "./Components/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +32,17 @@ export const router = createBrowserRouter([
 },
 
   ]
-}
+},
+
+{
+  path: "/Dashboard",
+  element:<DashboardLayout></DashboardLayout>,
+  errorElement: <ErrorPage></ErrorPage>,
+  children:[
+   
+
+]
+},
+
 ])
   

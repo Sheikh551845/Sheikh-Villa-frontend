@@ -1,10 +1,18 @@
-import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from './AuthProvider'
 import { FaBuildingColumns } from 'react-icons/fa6'
 
 export default function DarkNav() {
     const {user,logout,setTheme,theme}=useContext(AuthContext)
+    const [isClicked, setIsClicked] = useState(false);
+    const navigate=useNavigate()
+
+    const handleImageClick = () => {
+      setIsClicked(!isClicked);
+    };
+   
+
   return (
     <div className=" fixed z-10 bg-opacity-30 bg-white  flex justify-between items-center mt-1 justify-items-center shadow-xl p-3  border-white w-screen"> 
     <div className=" flex items-center">
@@ -114,32 +122,64 @@ export default function DarkNav() {
     </div>
    </div>
    
-    {user && Object.keys(user).length > 0?    
-    <div className="flex justify-center items-center gap-2 ">
+    {user && Object.keys(user).length > 0?  
+     
+    <div className="flex justify-center items-center gap-4  ml-3">
+     
+      
+    <div className="avatar  relative">
+     <div
+       className="w-6 md:w-12 rounded-full ring ring-offset-base-100 ring-offset-2 hover:cursor-pointer"
+       onClick={handleImageClick}
+     >
+       {user?.photoURL !== null ? (
+         <img src={user.photoURL} alt="User Avatar" />
+       ) : (
+         <img src="https://i.ibb.co/3MJwzX0/pngegg-1.png" alt="Default Avatar" />
+       )}
+     </div>
 
-
-<div className="avatar  group relative  ">
-        <div className="w-6 md:w-12 rounded-full ring ring-offset-base-100 ring-offset-2 hover: cursor-pointer">
-  
-          {
-            user?.photoURL !==null ? <img src={user.photoURL} className="rounded-full bg-white" /> : <img src="https://i.ibb.co/3MJwzX0/pngegg-1.png"/>
-          }
-           
-        
+     {isClicked && (
+       <div className=" absolute bg-gray-700 text-white p-2 rounded max-w-max h-[170px] top-10 right-5  ">
+       
+           <p
+           className="text-white  mt-3 mb-4 max-w-fit text-sm mx-auto"
+          
+         >
+           {user.displayName}
+         </p>
          
-        </div>
-        <p className="hidden group-hover:block absolute bg-gray-800 text-white p-2 rounded w-fit top-10 ">{user.displayName}</p>
-        </div>
-    
-      <button className="md:btn text-black p-1 md:w-22 md:h-6    md:p-3 bg-white rounded-lg text-xs lg:text-base"
-          onClick={logout}
-      >Logout</button>
+         <button
+           className="text-white p-1 w-full md:h-10 md:p-3 bg-black rounded-lg text-xs lg:text-white m-1   "
+           onClick={()=>navigate("/Dashboard")}
+         >
+          Dashboard
+         </button>
+        
+        
+          
+         
+         <button
+           className="text-white p-1 w-full md:h-10 md:p-3 bg-black rounded-lg text-xs lg:text-white m-1 "
+           onClick={logout}
+         >
+           Logout
+         </button>
+        
+        
 
-      <div>
-     <button onClick={()=>setTheme("light")}><img className=" w-5 h-5 md:w-8 md:h-8 rounded-full bg-white"  src="https://i.ibb.co/DVTX92r/moon-2.png" alt="" /></button>
+
+       </div>
+     )}
    </div>
-    
-    </div> :
+       
+      
+ 
+   <div>
+     <button onClick={()=>setTheme("light")}><img className=" w-5 h-5 md:w-8 md:h-8 rounded-full bg-white"  src="https://i.ibb.co/DVTX92r/moon-2.png" alt="" /></button>
+   </div> 
+     
+     </div>  :
 
 <div className="flex justify-center items-center gap-2 md:gap-4 mr-3">
   <NavLink to="/Login">

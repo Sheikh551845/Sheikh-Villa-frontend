@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
 import DarkNav from './DarkNav';
 import { FaBuildingColumns } from 'react-icons/fa6';
@@ -9,6 +9,7 @@ export default function Navbar() {
 
     const {user,logout,setTheme,theme}=useContext(AuthContext)
     const [isClicked, setIsClicked] = useState(false);
+    const navigate=useNavigate()
 
     const handleImageClick = () => {
       setIsClicked(!isClicked);
@@ -149,10 +150,10 @@ export default function Navbar() {
       </div>
 
       {isClicked && (
-        <div className=" absolute bg-gray-700 text-white p-2 rounded max-w-max h-[170px] top-10 right-5  ">
+        <div className=" absolute bg-black bg-opacity-70 text-white p-2 rounded max-w-max h-[170px] top-10 right-5  ">
         
             <p
-            className="text-white  mt-3 mb-4 max-w-fit text-sm mx-auto"
+            className="text-white  mt-3 mb-4 max-w-fit md:text-sm mx-auto"
            
           >
             {user.displayName}
@@ -160,7 +161,7 @@ export default function Navbar() {
           
           <button
             className="text-white p-1 w-full md:h-10 md:p-3 bg-black rounded-lg text-xs lg:text-white m-1   "
-            
+            onClick={()=>navigate("/Dashboard")}
           >
            Dashboard
           </button>
