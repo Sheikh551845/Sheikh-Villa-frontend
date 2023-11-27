@@ -25,7 +25,7 @@ export default function AuthProvider({children}) {
   const [DataLoading, setDataLoading] = useState(true)
   const [data, setData] = useState([])
   const [TakenAssignment, setTakenAssignment] = useState([])
-  const [CurrentUser,setCurrenUser]=useState(' ')
+ const [currentUser,setCurrenUser]=useState('')
   const [AllSubmittedAssignment,setAllSubmittedAssignment]=useState([])
   
   const axiosPublic = useAxiosPublic();
@@ -93,10 +93,18 @@ const {data: AllAgreement = [], isPending: AgreementLoading, refetch:AgreementRe
   }
 })
 
-const {data: AllApartment = [], isPending: AllApartmentLoading} = useQuery({
+const {data: AllApartment = [], isPending: AllApartmentLoading, refetch:AllApartmentRefetch} = useQuery({
   queryKey: ['AllApartment'], 
   queryFn: async() =>{
       const res = await axiosPublic.get('/AllApartment');
+      return res.data;
+  }
+})
+
+const {data: AllUser = [], isPending: AllUserLoading, refetch:AllUserRefetch }= useQuery({
+  queryKey: ['AllUser'], 
+  queryFn: async() =>{
+      const res = await axiosPublic.get('/AllUser');
       return res.data;
   }
 })
@@ -124,7 +132,11 @@ const {data: AllApartment = [], isPending: AllApartmentLoading} = useQuery({
     AgreementLoading,
     AgreementRefetch,
     AllApartment,
-    AllApartmentLoading
+    AllApartmentLoading,
+    AllApartmentRefetch,
+    AllUser,
+    AllUserRefetch,
+    AllUserLoading
    
   }
  

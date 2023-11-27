@@ -17,11 +17,16 @@ export default function ApartmentCard(Apartment) {
 
  
 
-  const handleAgreement = async() => {
+  const handleAgreement = async () => {
+    console.log('Starting handleAgreement function');
+    
     if (!user) {
+      console.log('User not logged in. Redirecting to login page.');
       navigate('/Login');
       toast.error('Please login ');
     } else {
+      console.log('User logged in. Proceeding with agreement submission.');
+      
       const info = {
         UserName: user.displayName,
         UserEmail: user.email,
@@ -31,33 +36,34 @@ export default function ApartmentCard(Apartment) {
         block_name: Apartment.Apartment.floor_no,
         status: 'pending',
       };
-      const findA = AllAgreement?.find(Agreement=>Agreement.apartment_no == info.apartment_no)
- 
-
+      
+      console.log('Agreement Info:', info);
+      
+      const findA = AllAgreement?.find(Agreement => Agreement.apartment_no == info.apartment_no);
+  
       try {
-        if(findA)
-        {
-        toast.error("This agreement already submitted")
+        if (findA) {
+          console.log('This agreement already submitted. Displaying error toast.');
+          toast.error('This agreement already submitted');
+        } else {
+          console.log('No previous agreement found. Submitting new agreement.');
+  
+          const res = await axiosPublic.post('/Agreement', info);
+          console.log('Agreement submission response:', res);
+  
+          if (res.data.insertedId) {
+            console.log('Agreement submitted successfully. Showing success message.');
+            Swal.fire('Submitted', ' Agreement has been submitted.', 'success');
+          }
         }
-        else
-        {
-       
-        const res =  await axiosPublic.post('/Agreement', info)
-       .then(data=>{
-       
-        if (data.data.insertedId) {
-          Swal.fire('Submitted', ' Agreement has been submitted.', 'success');
-        }
-       })
-      }
       } catch (error) {
         console.error('Error creating agreement:', error);
       }
     }
-     
-    
   
+    console.log('End of handleAgreement function');
   };
+  
   
 
   return (

@@ -41,7 +41,8 @@ export default function Registration() {
        const userInfo={
         'name': name,
         'email': email,
-        'photo': Photo
+        'photo': Photo,
+        'Role': "User"
        }
          
       

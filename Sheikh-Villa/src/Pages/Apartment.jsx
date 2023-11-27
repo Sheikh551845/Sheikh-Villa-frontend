@@ -7,7 +7,7 @@ import { AuthContext } from '../Components/AuthProvider';
 
 export default function Apartment() {
 
- const {AllApartment,AllApartmentLoading}=useContext(AuthContext)
+ const {AllApartment,AllApartmentLoading,loading}=useContext(AuthContext)
 
 const [AllData, setAllData]=useState();
 const[items, setItems]=useState();
@@ -131,7 +131,7 @@ else{
              
 
 {
-AllApartmentLoading ? <Spinner></Spinner>:
+AllApartmentLoading || loading ? <Spinner></Spinner>:
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
 {
   AllData?.map((Apartment, index) => (
