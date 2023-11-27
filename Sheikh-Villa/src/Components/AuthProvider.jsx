@@ -1,7 +1,8 @@
 import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword,  signInWithPopup,  signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react'
 import { app } from '../Firebase/firebase.config';
-
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 export const AuthContext = createContext(null);
@@ -27,7 +28,7 @@ export default function AuthProvider({children}) {
   const [CurrentUser,setCurrenUser]=useState(' ')
   const [AllSubmittedAssignment,setAllSubmittedAssignment]=useState([])
   
- 
+  const axiosPublic = useAxiosPublic();
 
 
   //Google
@@ -79,57 +80,28 @@ const update=(photo,name)=>
 }
 
 
-async function fetchDataWithRetry(url, maxRetries = 10) {
-  let retries = 0;
-  let response = null;
 
-  while (retries < maxRetries) {
-    try {
-      response = await fetch(url);
-      if (response.ok) {
-        
-        return response;
-      }
-    } catch (error) {
-      console.error(`Error fetching data (retry ${retries + 1}):`, error);
-    }
-    
-    retries++;
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+
+
+
+
+const {data: AllAgreement = [], isPending: AgreementLoading, refetch:AgreementRefetch} = useQuery({
+  queryKey: ['AllAgreement'], 
+  queryFn: async() =>{
+      const res = await axiosPublic.get('/Agreement');
+      return res.data;
   }
+})
 
-  throw new Error(`Max retries (${maxRetries}) exceeded, unable to fetch data`);
-}
+const {data: AllApartment = [], isPending: AllApartmentLoading} = useQuery({
+  queryKey: ['AllApartment'], 
+  queryFn: async() =>{
+      const res = await axiosPublic.get('/AllApartment');
+      return res.data;
+  }
+})
 
-
-
-
-useEffect(()=>{
-  setDataLoading(true)
-  fetchDataWithRetry("https://assignment-assist-back-end.vercel.app/AllAssignment")
-  .then ((res)=> res.json())
-  .then((data)=>{setData(data)
-    setDataLoading(false)
-    })
-  } ,[])
-
-  useEffect(()=>{
-    setDataLoading(true)
-    fetchDataWithRetry("https://assignment-assist-back-end.vercel.app/MyTakenAssignment")
-    .then ((res)=> res.json())
-    .then((data)=>{setTakenAssignment(data)
-      setDataLoading(false)
-      })
-    } ,[])
-
-    useEffect(()=>{
-      setDataLoading(true)
-      fetchDataWithRetry("https://assignment-assist-back-end.vercel.app/AllSubmittedAssignment")
-      .then ((res)=> res.json())
-      .then((data)=>{setAllSubmittedAssignment(data)
-        setDataLoading(false)
-        })
-      } ,[])
+    
 
     
 
@@ -147,8 +119,12 @@ useEffect(()=>{
     update,
     setTheme,
     theme,
-    CurrentUser,
     setData,
+    AllAgreement,
+    AgreementLoading,
+    AgreementRefetch,
+    AllApartment,
+    AllApartmentLoading
    
   }
  

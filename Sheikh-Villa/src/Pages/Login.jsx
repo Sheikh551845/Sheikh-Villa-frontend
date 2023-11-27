@@ -49,19 +49,7 @@ export default function Login() {
 
 
             }
-            const handleSocialLogin = () => {
-                googleSignIn()
-                    .then(res => {
-                        toast.success('User logged in successfully');
-                        navigate('/')
-        
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        toast.error(error.message)
-        
-                    })
-            }
+          
 
   return (
     <div className="mx-auto pt-40 md:pt-44">
@@ -101,15 +89,7 @@ export default function Login() {
        Registration
              </a>
   </p>
-  <div className="py-3">
-         <div className="divider">continue with</div>
-            <div className="flex justify-around ">
-                <button
-                    onClick={() =>handleSocialLogin()}
-                    className="btn btn-neutral btn-sm">Google</button>
-
-            </div>
-    </div>
+<SocialLogin></SocialLogin>
                   </div>
 </div>
   </div>

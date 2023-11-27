@@ -1,19 +1,23 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { AuthContext } from './AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../Hooks/useAxiosPublic';
+
 import Swal from 'sweetalert2'
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 export default function ApartmentCard(Apartment) {
-  const {user}=useContext(AuthContext)
+  const {user,AllAgreement}=useContext(AuthContext)
   const axiosPublic = useAxiosPublic();
+
+ 
  
   const navigate=useNavigate()
 
-  const handleAgreement = () => {
+ 
+
+  const handleAgreement = async() => {
     if (!user) {
       navigate('/Login');
       toast.error('Please login ');
@@ -27,21 +31,32 @@ export default function ApartmentCard(Apartment) {
         block_name: Apartment.Apartment.floor_no,
         status: 'pending',
       };
+      const findA = AllAgreement?.find(Agreement=>Agreement.apartment_no == info.apartment_no)
+ 
 
       try {
-        const res =  axiosPublic.post('/Agreement', info)
+        if(findA)
+        {
+        toast.error("This agreement already submitted")
+        }
+        else
+        {
+       
+        const res =  await axiosPublic.post('/Agreement', info)
        .then(data=>{
        
         if (data.data.insertedId) {
           Swal.fire('Submitted', ' Agreement has been submitted.', 'success');
         }
        })
-        
+      }
       } catch (error) {
         console.error('Error creating agreement:', error);
       }
-     
     }
+     
+    
+  
   };
   
 

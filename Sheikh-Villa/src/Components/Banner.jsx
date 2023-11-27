@@ -28,6 +28,7 @@ const Banner = () => {
   const nextSlide = () => {
     const nextIndex = (currentSlide % slideData.length) + 1;
     setCurrentSlide(nextIndex);
+    navigate(`#slide${currentSlide}`);
   };
 
   const prevSlide = () => {
@@ -38,7 +39,7 @@ const Banner = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       nextSlide();
-      navigate(`#slide${currentSlide}`);
+     
     }, 3000);
 
     // Cleanup the interval on component unmount
@@ -49,6 +50,7 @@ const Banner = () => {
     <div className="carousel w-full">
       {slideData.map((slide) => (
         <div key={slide.ID} className="carousel-item relative w-screen">
+          
           <div id={`slide${slide.ID}`}>
             <BannerContent src={slide.image}></BannerContent>
           </div>

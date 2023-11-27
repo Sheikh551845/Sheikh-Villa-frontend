@@ -37,6 +37,19 @@ export default function DarkNav() {
     Apartment
   </li>
               </NavLink>
+
+             
+
+              <NavLink
+                to="/Registration"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "underline" : ""}
+              >
+                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
+     
+    Registration
+  </li>
+              </NavLink>
   
   
         
@@ -68,6 +81,7 @@ export default function DarkNav() {
     Home
   </li>
               </NavLink>
+
               <NavLink
                 to="/Apartment"
                 className={({ isActive, isPending }) =>
@@ -76,6 +90,16 @@ export default function DarkNav() {
                 <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
      
     Apartment
+  </li>
+              </NavLink>
+              <NavLink
+                to="/Registration"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "underline" : ""}
+              >
+                <li className=" text-white cursor-pointer h-full flex items-center text-sm hover:text-indigo-700 tracking-normal transition duration-150 ease-in-out">
+     
+    Registration
   </li>
               </NavLink>
   

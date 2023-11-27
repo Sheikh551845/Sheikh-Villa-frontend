@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ApartmentCard from '../Components/ApartmentCard'
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from '../Hooks/useAxiosPublic';
+
 import ComponentTitle from '../Components/ComponentTitle';
 import Spinner from '../Components/Spinner';
+import { AuthContext } from '../Components/AuthProvider';
 
 export default function Apartment() {
 
-  const axiosPublic = useAxiosPublic();
-  const {data: AllApartment = [], isPending: loading, refetch} = useQuery({
-    queryKey: ['AllApartment'], 
-    queryFn: async() =>{
-        const res = await axiosPublic.get('/AllApartment');
-        return res.data;
-    }
-})
+ const {AllApartment,AllApartmentLoading}=useContext(AuthContext)
 
 const [AllData, setAllData]=useState();
 const[items, setItems]=useState();
@@ -138,7 +131,7 @@ else{
              
 
 {
-loading ? <Spinner></Spinner>:
+AllApartmentLoading ? <Spinner></Spinner>:
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
 {
   AllData?.map((Apartment, index) => (

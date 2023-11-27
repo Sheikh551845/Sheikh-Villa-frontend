@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Components/AuthProvider';
 import SocialLogin from '../Components/SocialLogin';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 
@@ -12,6 +14,8 @@ import SocialLogin from '../Components/SocialLogin';
 export default function Registration() {
 
   const navigate =useNavigate()
+  
+  const axiosPublic = useAxiosPublic();
 
   const {crateEmailUser,update,user}= useContext(AuthContext);
     
@@ -34,7 +38,11 @@ export default function Registration() {
 
        
 
-       
+       const userInfo={
+        'name': name,
+        'email': email,
+        'photo': Photo
+       }
          
       
         
@@ -50,10 +58,17 @@ export default function Registration() {
               
              
               
-              update(Photo,name)
-                 .then(()=>{
-                  toast.success('User created successfully');
-                  navigate('/')
+              update(Photo,name) 
+                 .then(async ()=>{
+                  const res =  await axiosPublic.post('/AllUsers', userInfo )
+                  .then(data=>{
+                  
+                   if (data.data.insertedId) {
+                    toast.success('User created successfully');
+                    navigate('/Apartment')
+                   }
+                  })
+                  
                  })
               
             })
