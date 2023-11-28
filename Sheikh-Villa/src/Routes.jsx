@@ -7,6 +7,9 @@ import Registration from "./Pages/Registration";
 import Apartment from "./Pages/Apartment";
 import DashboardLayout from "./Components/Dashbord/DashbordLayout";
 import PrivateRoute from "./Components/PrivateRoute";
+import UserProfile from "./Components/Dashbord/UserProfile";
+import Announcements from "./Components/Dashbord/Announcements";
+import DashHome from "./Components/Dashbord/DashHome";
 
 export const router = createBrowserRouter([
     {
@@ -19,15 +22,15 @@ export const router = createBrowserRouter([
         element:<Home></Home>
     },
     {
-      path: "/Login",
+      path: "Login",
       element:<Login></Login>
   },
   {
-    path: "/Registration",
+    path: "Registration",
     element:<Registration></Registration>
 },
 {
-  path: "/Apartment",
+  path: "Apartment",
   element:<Apartment></Apartment>
 },
 
@@ -35,11 +38,25 @@ export const router = createBrowserRouter([
 },
 
 {
-  path: "/Dashboard",
-  element:<DashboardLayout></DashboardLayout>,
+  path: "Dashboard",
+  element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
   errorElement: <ErrorPage></ErrorPage>,
   children:[
+    {
+
+      path: "/Dashboard",
+      element: <DashHome></DashHome>
+    },
+    {path: "Announcements",
+     element: <Announcements></Announcements>
+    },
+    
    
+    {path: "UserProfile",
+      element: <UserProfile></UserProfile>
+    },
+
+    
 
 ]
 },

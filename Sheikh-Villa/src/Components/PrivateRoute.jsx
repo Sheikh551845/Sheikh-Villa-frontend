@@ -12,9 +12,11 @@ export default function PrivateRoute({children}) {
 
     
     if (loading) 
-    return <div className="flex justify-center items-center h-screen">
+    return <div >
     {
-      theme =="dark"? <div><Navbar></Navbar><HashLoader size={100} color='white'/></div>:<div><Navbar></Navbar><HashLoader size={100} color="#36d7b7"/></div>
+      theme =="dark"? <div><Navbar></Navbar> <div  className="flex justify-center items-center h-screen"><HashLoader size={100} color='white'/></div></div>:<div><Navbar></Navbar> <div className="flex justify-center items-center h-screen">
+        <HashLoader size={100} color="#36d7b7" /></div>
+      </div>
     }
  
 </div>

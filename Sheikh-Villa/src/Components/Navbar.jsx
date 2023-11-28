@@ -185,7 +185,7 @@ export default function Navbar() {
         
        
   
-        <button onClick={()=>setTheme("dark")}><img className=" w-5 h-5 md:w-8 md:h-8 rounded-full"  src="https://i.ibb.co/KsDQxZ1/moon.png" alt="" /></button>
+        <button onClick={()=>setTheme("dark")}><img className=" w-5 h-5 md:w-8 md:h-8 rounded-full mr-5 md:mr-10"  src="https://i.ibb.co/KsDQxZ1/moon.png" alt="" /></button>
       
       </div> :
   
@@ -195,7 +195,7 @@ export default function Navbar() {
   </NavLink>
   
   
-        <button onClick={()=>setTheme("dark")}><img className=" w-5 h-5 md:w-8 md:h-8 rounded-full"  src="https://i.ibb.co/KsDQxZ1/moon.png" alt="" /></button>
+        <button onClick={()=>setTheme("dark")}><img className=" w-5 h-5 md:w-8 md:h-8 rounded-full  mr-5 md:mr-10"  src="https://i.ibb.co/KsDQxZ1/moon.png" alt="" /></button>
   </div>
   }
   

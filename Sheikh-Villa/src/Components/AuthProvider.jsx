@@ -136,7 +136,8 @@ const {data: AllUser = [], isPending: AllUserLoading, refetch:AllUserRefetch }= 
     AllApartmentRefetch,
     AllUser,
     AllUserRefetch,
-    AllUserLoading
+    AllUserLoading,
+    currentUser
    
   }
  

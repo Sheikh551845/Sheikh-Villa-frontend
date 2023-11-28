@@ -3,7 +3,7 @@ import { FaBuildingColumns } from 'react-icons/fa6'
 
 export default function DashLogo() {
   return (
-    <div className="rounded-r bg-black bg-opacity-80  flex justify-between w-full py-2 md:py-4 px-6 items-center ">
+    <div className="rounded-r bg-black bg-opacity-80  flex justify-between w-full py-2 md:py-4 px-6 items-center fixed">
     <div className="flex justify-between  items-center space-x-3">
         
           <div>
