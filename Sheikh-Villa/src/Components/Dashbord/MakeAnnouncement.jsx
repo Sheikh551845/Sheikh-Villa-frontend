@@ -7,7 +7,15 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 export default function MakeAnnouncement() {
     const axiosPublic = useAxiosPublic();
 
-    const [formData, setFormData] = useState({});
+    const dateObject = new Date();
+
+    const year = dateObject.getFullYear();
+    const month = String(dateObject.getMonth() + 1).padStart(2, '0'); 
+    const day = String(dateObject.getDate()).padStart(2, '0');
+
+   const currentDate = `${year}-${month}-${day}`;
+
+   const [formData, setFormData] = useState({Date:currentDate});
  
         const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,6 +25,9 @@ export default function MakeAnnouncement() {
         });
         
       };
+
+    
+    
     
      
     
@@ -27,13 +38,16 @@ export default function MakeAnnouncement() {
 
         e.preventDefault();
 
+        console.log(formData)
     
         const res = await axiosPublic.post('/AllAnnouncement', formData);
          
   
         if (res.data.insertedId) {
+            
          
           Swal.fire('Created', ' Announcement has been created.', 'success');
+          setFormData({Announcement:" ", Title:" "})
          
         }
     
@@ -64,11 +78,12 @@ export default function MakeAnnouncement() {
                 placeholder="Announcement title"
                 className="input border-black w-[15rem] md:w-96"
                 name="Title"
-                value={formData.givenMarks}
+                value={formData.Title}
                 onChange={handleChange}
                 required
               />
             </div>
+           
          
           </div>
           <div className="form-control lg:flex lg:gap-12 flex-row flex-wrap lg:items-center lg:justify-center mx-auto">
@@ -81,9 +96,22 @@ export default function MakeAnnouncement() {
                 placeholder="Write announcement"
                 className="input border-black w-[15rem] md:w-96"
                 name="Announcement"
-                value={formData.feedback}
+                value={formData.Announcement}
                 onChange={handleChange}
                 required
+              />
+            </div>
+          </div>
+          <div className="form-control lg:flex lg:gap-12 flex-row flex-wrap lg:items-center lg:justify-center mx-auto">
+            <div>
+              <label className="label">
+                <span className="label-text text-bold text-black">Date </span>
+              </label>
+              <input
+                
+                placeholder={currentDate}
+                className="input border-black w-[15rem] md:w-96"
+                readOnly
               />
             </div>
           </div>

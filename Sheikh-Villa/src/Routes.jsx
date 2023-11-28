@@ -13,6 +13,7 @@ import DashHome from "./Components/Dashbord/DashHome";
 import AdminProfile from "./Components/Dashbord/AdminProfile";
 import ManageAgreement from "./Components/Dashbord/ManageAgreements";
 import ManageMember from "./Components/Dashbord/ManageMember";
+import MakeAnnouncement from "./Components/Dashbord/MakeAnnouncement";
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
 
   {path: "ManageMember",
   element: <ManageMember></ManageMember>
+  },
+
+  {path: "MakeAnnouncement",
+  element: <MakeAnnouncement></MakeAnnouncement>
   },
 
 
