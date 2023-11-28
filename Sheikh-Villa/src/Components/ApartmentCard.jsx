@@ -11,7 +11,20 @@ export default function ApartmentCard(Apartment) {
   const {user,AllAgreement}=useContext(AuthContext)
   const axiosPublic = useAxiosPublic();
   const [clicked,setClicked]=useState(false)
+  const dateObject = new Date();
 
+      const year = dateObject.getFullYear();
+      const month = String(dateObject.getMonth() + 1).padStart(2, '0'); 
+      const day = String(dateObject.getDate()).padStart(2, '0');
+
+     const currentDate = `${year}-${month}-${day}`;
+        
+        
+
+  if(user?.email=='mama@mami.com')
+  {
+    setClicked(true)
+  }
  
  
   const navigate =useNavigate()
@@ -37,6 +50,8 @@ export default function ApartmentCard(Apartment) {
         apartment_no: Apartment.Apartment.apartment_no,
         block_name: Apartment.Apartment.floor_no,
         status: 'pending',
+        Submit_date: currentDate,
+        Accept_date: ''
       };
       
    
