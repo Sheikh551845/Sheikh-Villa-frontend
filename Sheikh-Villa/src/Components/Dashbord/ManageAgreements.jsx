@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { AuthContext } from "../AuthProvider";
 import DashContentFormat from "./DashContentFormat";
+import { toast } from "react-toastify";
 
 
 
@@ -42,6 +43,37 @@ const PendingAgreement = AllAgreement?.filter(data => data.status== 'pending');
 
             }
         });
+    }
+
+    const handleUpdate = async (Agreement) => {
+
+        const findA = AllUser?.find(User => User.email == Agreement.UserEmail);
+
+        const Agreements =  await axiosPublic.patch(`/Agreement/${Agreement._id}`, {"status":"accepted"});
+        console.log(Agreements)
+        if(Agreements?.data.modifiedCount > 0){
+            AgreementRefetch();
+            Swal.fire('Accepted', ' Agreement has been accepted.', 'success');
+        }
+
+       
+      if(findA.role=="user")
+      {
+        const Users = await axiosPublic.patch(`/User/${findA._id}`, {"role":"member"});
+        console.log(Users)
+       if(Users?.data?.modifiedCount > 0){
+           AllUserRefetch();
+           toast.success(`${findA.name} is now a member`)
+          
+       }
+
+
+      }
+
+       
+       
+
+
     }
 
     return (

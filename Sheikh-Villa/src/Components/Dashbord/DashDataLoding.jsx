@@ -7,10 +7,8 @@ export default function DashDataLoading({children}) {
 
     const {loading,AgreementLoading,AllApartmentLoading,AllUserLoading,theme}=useContext(AuthContext)
 
-    const currentDate = new Date();
+ 
 
-   
-        console.log(currentDate.toLocaleString())
    
    
 

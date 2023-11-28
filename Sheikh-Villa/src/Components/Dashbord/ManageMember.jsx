@@ -6,12 +6,15 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider";
-const{AllUserRefetch,AllUser}=useContext(AuthContext)
-const TotalMember = AllUser?.filter(data => data.role== 'member');
+import DashContentFormat from "./DashContentFormat";
+import { toast } from "react-toastify";
+
 
 
 
 const ManageMember = () => {
+    const{AllUserRefetch,AllUser}=useContext(AuthContext)
+const TotalMember = AllUser?.filter(data => data.role== 'member');
    
     const axiosPublic = useAxiosPublic();
 
@@ -26,27 +29,21 @@ const ManageMember = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await axiosPublic.delete(`/User/${user._id}`);
-              
-                if (res.data.deletedCount > 0) {
-                    
-                    AllUserRefetch();
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: `${item.name} has been deleted`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-
+                const Users = await axiosPublic.patch(`/User/${user._id}`, {"role":"user"});
+                console.log(Users)
+               if(Users?.data?.modifiedCount > 0){
+                   AllUserRefetch();
+                   toast.success(`${user.name} is now a user`)
+                  
+               }
 
             }
         });
     }
 
     return (
-        <div>
+        <DashContentFormat>
+             <div>
             
             <div>
                 <div className="overflow-x-auto">
@@ -99,6 +96,8 @@ const ManageMember = () => {
                 </div>
             </div>
         </div>
+        </DashContentFormat>
+       
     );
 };
 

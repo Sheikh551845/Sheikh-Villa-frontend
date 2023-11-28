@@ -59,7 +59,7 @@ export default function DashNav() {
                           <FaUser className="text-[12px] md:text-lg lg:text-lg "></FaUser>
                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Profile</p>
                        </button>
-                       <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                       <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/ManageMember")}>
                           <FaUsersCog className="text-[12px] md:text-lg lg:text-lg "></FaUsersCog>
                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Manage Members</p>
                        </button>
