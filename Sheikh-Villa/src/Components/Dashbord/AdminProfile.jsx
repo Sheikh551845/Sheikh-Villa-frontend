@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import DashContentFormat from './DashContentFormat'
 import { AuthContext } from '../AuthProvider'
+import DashDataLoading from './DashDataLoding';
 
 export default function AdminProfile() {
   const{user,AllApartment,AllUser}=useContext(AuthContext)
@@ -8,7 +9,8 @@ export default function AdminProfile() {
   const TotalMember = AllUser?.filter(data => data.role== 'member');
 
   return (
-    <div className="">
+    <DashDataLoading>
+       <div className="">
        <DashContentFormat>
     
        
@@ -63,5 +65,7 @@ export default function AdminProfile() {
        </DashContentFormat>
       
     </div>
+    </DashDataLoading>
+   
   )
 }

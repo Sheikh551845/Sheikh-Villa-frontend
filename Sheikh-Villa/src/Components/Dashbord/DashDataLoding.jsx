@@ -9,7 +9,7 @@ export default function DashDataLoading({children}) {
     <div>
         {
             loading || AgreementLoading || AllApartmentLoading || AllUserLoading?
-            <div  className="flex justify-center items-center h-screen"><HashLoader size={80} color='white'/></div>:
+            <div  className="flex justify-center items-center h-screen"><HashLoader size={80} color='#36d7b7'/></div>:
             children
 
         }
