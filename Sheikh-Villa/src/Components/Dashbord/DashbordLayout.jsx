@@ -7,12 +7,12 @@ export default function DashboardLayout() {
   return (
     <div>
        
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 ">
-            <div className=''>
+        <div className=" w-full grid grid-cols-5 xs:grid-cols-6 sm:grid-cols-6 lg:grid-cols-12 xl:grid-cols-14   ">
+            <div className='  col-span-2 xs:col-span-2 sm:col-span-2 lg:col-span-3 xl:col-span-2'>
             <DashNav className=''></DashNav>
             </div>
         
-        <div className=' col-span-2 sm:col-span-3 lg:col-span-4 xl:col-span-6 '>
+        <div className='   col-span-3 xs:col-span-4 sm:col-span-4 lg:col-span-9 xl:col-span-8 '>
             <Outlet></Outlet>
         </div>
         </div>

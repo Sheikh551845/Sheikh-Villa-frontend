@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react'
-import { FaBuildingColumns, FaBullhorn } from 'react-icons/fa6';
-import { FaHome } from "react-icons/fa";
+import { FaBuildingColumns, FaBullhorn, FaFlag } from 'react-icons/fa6';
+import { FaHome, FaUsersCog } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
+import { RiCoupon3Line } from "react-icons/ri";
 
 export default function DashNav() {
-    const { user}=useContext(AuthContext)
+    const { user,AllUser}=useContext(AuthContext)
     const navigate=useNavigate()
+  
+    const CurrentLogged = AllUser?.find(data => data.email== user.email);
 
+    console.log(CurrentLogged)
 
     return (
         <div className='fixed mr-2'>
@@ -26,27 +30,65 @@ export default function DashNav() {
                     
                    
                 </div>
-                <div className="mt-3 flex flex-col justify-start items-center  pl-4 w-full pb-5 gap-4">
+                {
+                    CurrentLogged?.role=='user'&&
+                    <div className="mt-3 flex flex-col justify-start items-center  pl-4 w-full pb-5 gap-4">
                    
-                <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/UserProfile")}>
-                       <FaUser className="text-[12px] md:text-lg lg:text-lg "></FaUser>
-                        <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Profile</p>
-                    </button>
+                    <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/UserProfile")}>
+                           <FaUser className="text-[12px] md:text-lg lg:text-lg "></FaUser>
+                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Profile</p>
+                        </button>
+    
+    
+                        <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                           <FaBullhorn className="text-[12px] md:text-lg lg:text-lg "></FaBullhorn>
+                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Announcements</p>
+                        </button>
+                        
+                       
+                    </div>
+                }
 
-
-                    <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
-                       <FaBullhorn className="text-[12px] md:text-lg lg:text-lg "></FaBullhorn>
-                        <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Announcements</p>
-                    </button>
-                    
+{
+                    CurrentLogged?.role=='admin'&&
+                    <div className="mt-3 flex flex-col justify-start items-center  pl-4 w-full pb-5 gap-4">
                    
-                </div>
+                    <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/UserProfile")}>
+                           <FaUser className="text-[12px] md:text-lg lg:text-lg "></FaUser>
+                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Profile</p>
+                        </button>
+                        <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                           <FaUsersCog className="text-[12px] md:text-lg lg:text-lg "></FaUsersCog>
+                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Manage Members</p>
+                        </button>
+    
+    
+                        <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                           <FaBullhorn className="text-[12px] md:text-lg lg:text-lg "></FaBullhorn>
+                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Make Announcement</p>
+                        </button>
+
+                        <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                           <FaFlag className="text-[12px] md:text-lg lg:text-lg "></FaFlag>
+                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Agreement Requests</p>
+                        </button>
+
+                        <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                           <RiCoupon3Line className="text-[12px] md:text-lg lg:text-lg "></RiCoupon3Line>
+                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Manage Coupons
+</p>
+                        </button>
+                        
+                       
+                    </div>
+                }
+              
                 
                 </div>
                 
 
                
-                <div className="flex flex-col justify-between items-center h-fit pb-6   px-6  w-full    mt-5 md:mt-10 mb-5 md:mb-8 border-gray-400 border-t pt-2 ">
+                <div className="flex flex-col justify-between items-center h-fit pb-6   px-6  w-full    mt-3 md:mt-10 mb-5 md:mb-3 border-gray-400 border-t pt-2 ">
                     
                     
                      

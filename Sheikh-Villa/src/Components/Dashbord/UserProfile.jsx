@@ -11,7 +11,7 @@ export default function UserProfile() {
        
         <div className="card  sm:w-72 md:w-full bg-base-100 shadow-xl h-[95vh]">
   
-        <figure><img src={user.photoURL} alt="Photo" /></figure>
+        <figure><img src={user.photoURL} alt="Photo" className='w-full h-full' /></figure>
   <div className="card-body">
     <div className=' border-b border-black
     '>
@@ -27,7 +27,7 @@ export default function UserProfile() {
     <h2 className="text-lg font-bold">
       Email:
     </h2>
-    <p className='text-normal'>{user.email}</p>
+    <p className='text-sm sm:text-normal'>{user.email}</p>
     </div>
     </div>
 

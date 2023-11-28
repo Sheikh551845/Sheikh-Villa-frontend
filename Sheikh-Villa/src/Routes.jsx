@@ -10,6 +10,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import UserProfile from "./Components/Dashbord/UserProfile";
 import Announcements from "./Components/Dashbord/Announcements";
 import DashHome from "./Components/Dashbord/DashHome";
+import AdminProfile from "./Components/Dashbord/AdminProfile";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
     {path: "UserProfile",
       element: <UserProfile></UserProfile>
     },
+
+    {path: "AdminProfile",
+    element: <AdminProfile></AdminProfile>
+  },
 
     
 
