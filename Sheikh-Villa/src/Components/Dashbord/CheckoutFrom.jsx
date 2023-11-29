@@ -44,7 +44,7 @@ export default function CheckoutFrom() {
     apartment_no: AcceptedAgreement.apartment_no,
     rent: AcceptedAgreement.rent ,
     PaymentDate: currentDate,
-    price: `${giveable}USD`
+    price: `${giveable}`
    
 });
 console.log(formData)

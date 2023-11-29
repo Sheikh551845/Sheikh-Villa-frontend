@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:8888'
+    baseURL: 'https://back-end-psi-six.vercel.app'
 })
 
 const useAxiosPublic = () => {

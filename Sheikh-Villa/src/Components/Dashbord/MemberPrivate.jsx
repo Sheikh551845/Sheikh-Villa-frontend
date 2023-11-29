@@ -18,7 +18,7 @@ export default function MemberPrivate({children}) {
     return (
         <div className='text-2xl flex  flex-col gap-4 justify-center items-center my-auto font-bold h-screen'>
         <p>Hello {CurrentUser.name}</p>
-        <p>Your is panel{CurrentUser.role}  </p>
+        <p>This is not {CurrentUser.role} panel</p>
         <p>You can't access others panel! </p>
   </div>
     )

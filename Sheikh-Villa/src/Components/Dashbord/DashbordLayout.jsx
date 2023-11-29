@@ -17,6 +17,7 @@ export default function DashboardLayout() {
         <div className='   col-span-3 xs:col-span-4 sm:col-span-4 lg:col-span-9 xl:col-span-8 '>
             <Outlet></Outlet>
         </div>
+        
         </DashDataLoading>
        
         </div>
