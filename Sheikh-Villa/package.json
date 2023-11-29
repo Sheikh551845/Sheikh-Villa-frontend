@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@egjs/react-flicking": "^4.11.1",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.2.0",
     "@tanstack/react-query": "^5.8.7",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.2",

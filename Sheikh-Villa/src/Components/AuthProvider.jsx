@@ -125,6 +125,14 @@ const {data: AllCoupon = [], isPending: AllCouponLoading, refetch:AllCouponRefet
   }
 })
 
+const {data: AllPayment = [], isPending: AllPaymentLoading, refetch:AllPaymentRefetch }= useQuery({
+  queryKey: ['AllPayment'], 
+  queryFn: async() =>{
+      const res = await axiosPublic.get('/AllPayment');
+      return res.data;
+  }
+})
+
     
 
     
@@ -159,7 +167,10 @@ const {data: AllCoupon = [], isPending: AllCouponLoading, refetch:AllCouponRefet
     AllAnnouncementRefetch,
     AllCoupon,
     AllCouponLoading,
-    AllCouponRefetch
+    AllCouponRefetch,
+    AllPayment,
+    AllPaymentLoading,
+    AllPaymentRefetch
    
   }
  

@@ -22,6 +22,11 @@ export default function DashNav() {
               <div className='fixed mr-2'>
            
            <div id="Main" className=" xl:rounded-r bg-black bg-opacity-80 w-fit  h-screen ">
+           <div className=" flex items-center  gap-1 p-1 border border-white">
+<FaBuildingColumns className=' text-lg md:text-2xl text-center text-white  ml-3'></FaBuildingColumns>
+                  
+                    <h3 className=" text-white font-bold tracking-normal leading-tight ml-3 text-normal md:text-xl text-center"> SHEIKH VILLA</h3>
+                </div>
            <div className='flex flex-col justify-between h-full'>
                <div className=''>
                <div className="mt-3 md:mt-6 flex flex-col justify-start items-center   w-full border-white border-b pb-5 mb-5 md:mb-10">
@@ -64,12 +69,12 @@ export default function DashNav() {
                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg"> My Profile</p>
                        </button>
 
-                       <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/UserProfile")}>
+                       <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/MakePayment")}>
                           <GiTakeMyMoney className="text-[12px] md:text-lg lg:text-lg "></GiTakeMyMoney>
                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Make payment</p>
                        </button>
 
-                       <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/UserProfile")}>
+                       <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/PaymentHistory")}>
                         
                           <MdPayment className="text-[12px] md:text-lg lg:text-lg "></MdPayment>
                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Payment History</p>

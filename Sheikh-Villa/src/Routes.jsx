@@ -19,6 +19,8 @@ import UserPrivate from "./Components/Dashbord/UserPrivate";
 import AdminPrivate from "./Components/Dashbord/AdminPrivate";
 import MemberProfile from "./Components/Dashbord/MemberProfile";
 import MemberPrivate from "./Components/Dashbord/MemberPrivate";
+import MakePayment from "./Components/Dashbord/MakePayment";
+import PaymentHistory from "./Components/Dashbord/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -108,6 +110,22 @@ export const router = createBrowserRouter([
   </MemberPrivate>
    
   
+},
+
+{path: "MakePayment",
+element:<MemberPrivate>
+  <MakePayment></MakePayment>
+</MemberPrivate>
+ 
+
+},
+
+{path: "PaymentHistory",
+element:<MemberPrivate>
+  <PaymentHistory></PaymentHistory>
+</MemberPrivate>
+ 
+
 },
 
     

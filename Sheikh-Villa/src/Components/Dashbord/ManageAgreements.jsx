@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 const ManageAgreement = () => {
     
 const{AllUserRefetch,AllUser,AllAgreement,AgreementRefetch,AllApartment,AllApartmentRefetch}=useContext(AuthContext)
+AgreementRefetch();
 
 const PendingAgreement = AllAgreement?.filter(data => data.status== 'pending');
 const dateObject = new Date();

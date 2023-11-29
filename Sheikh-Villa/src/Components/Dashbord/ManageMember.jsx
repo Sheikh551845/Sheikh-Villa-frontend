@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 
 
 const ManageMember = () => {
-    const{AllUserRefetch,AllUser,AllAgreement,AllApartment }=useContext(AuthContext)
+    const{AllUserRefetch,AllUser,AllAgreement,AllApartment,AllApartmentRefetch }=useContext(AuthContext)
     AllUserRefetch();
 const TotalMember = AllUser?.filter(data => data.role== 'member');
    
@@ -56,6 +56,7 @@ const TotalMember = AllUser?.filter(data => data.role== 'member');
                  
                
                if(Users?.data?.modifiedCount > 0){
+                AllApartmentRefetch()
                    AllUserRefetch();
                    toast.success(`${user.name} is now a user`)
                   
