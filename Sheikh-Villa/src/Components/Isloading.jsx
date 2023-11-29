@@ -8,11 +8,11 @@ import Navbar from './Navbar';
 import Spinner from './Spinner';
 
 export default function IsLoading({children}) {
-    const { loading, AgreementLoading ,AllApartmentLoading,AllUserLoading,AllAnnouncementLoading} = useContext(AuthContext);
+    const { loading, AgreementLoading ,AllApartmentLoading,AllUserLoading,AllAnnouncementLoading,AllCouponLoading} = useContext(AuthContext);
 
 
     
-    if (loading || AgreementLoading || AllApartmentLoading || AllUserLoading || AllAnnouncementLoading) 
+    if (loading || AgreementLoading || AllApartmentLoading || AllUserLoading || AllAnnouncementLoading||AllCouponLoading) 
     {
     return(
     <div><Navbar></Navbar> <Spinner></Spinner></div>
