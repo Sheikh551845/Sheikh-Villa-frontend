@@ -16,10 +16,10 @@ export default function Location() {
                     </div>
                 </div>
             </div>
-            <div className="py-12 md:w-1/2 xl:w-1/4 lg:w-1/2 sm:w-1/2">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.4256431480367!2d90.40770777533757!3d23.803458778634244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b4eede086d%3A0xb0bd0008837887be!2sShanta%20Northern%20Lights!5e0!3m2!1sen!2sbd!4v1700967577210!5m2!1sen!2sbd" className="h-72 w-80 md:w-[350px] lg:w-[450px] xl:w-[650px] border-0" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <div className="py-12 md:w-1/2 xl:w-1/4 lg:w-1/2 sm:w-1/2 h-full">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.4256431480367!2d90.40770777533757!3d23.803458778634244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b4eede086d%3A0xb0bd0008837887be!2sShanta%20Northern%20Lights!5e0!3m2!1sen!2sbd!4v1700967577210!5m2!1sen!2sbd" className="h-[60vh] w-80 md:w-[350px] lg:w-[450px] xl:w-[650px] border-0 " allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.4256431480367!2d90.40770777533757!3d23.803458778634244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b4eede086d%3A0xb0bd0008837887be!2sShanta%20Northern%20Lights!5e0!3m2!1sen!2sbd!4v1700967577210!5m2!1sen!2sbd" className="h-72 w-80 md:w-[350px] lg:w-[450px] xl:w-[650px] border-0" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+              
             </div>
         </div>
     </div>
