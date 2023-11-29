@@ -13,12 +13,19 @@ import { toast } from "react-toastify";
 
 
 const ManageMember = () => {
-    const{AllUserRefetch,AllUser}=useContext(AuthContext)
+    const{AllUserRefetch,AllUser,AllAgreement,AllApartment }=useContext(AuthContext)
+    AllUserRefetch();
 const TotalMember = AllUser?.filter(data => data.role== 'member');
    
     const axiosPublic = useAxiosPublic();
 
     const handleDeleteItem = (user) => {
+        const UserAgreements = AllAgreement?.filter(data => data.UserEmail== user.email);
+        const filteredData =     AllApartment?.filter(item1 => UserAgreements.some(item2 => item2.apartment_no === item1.apartment_no));
+        const AcceptedAgreement = UserAgreements?.filter(data => data.status== "accepted");
+        console.log(filteredData)
+        
+      
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -29,8 +36,25 @@ const TotalMember = AllUser?.filter(data => data.role== 'member');
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
+
                 const Users = await axiosPublic.patch(`/User/${user._id}`, {"role":"user"});
-                console.log(Users)
+
+
+                    
+                for (let i = 0; i < filteredData.length; i++) {
+                   
+                    const Apart = await axiosPublic.patch(`/Apartment/${filteredData[i]._id}`, {"status":"idle"});
+                  
+                  }
+
+                  for (let i = 0; i < AcceptedAgreement.length; i++) {
+                    
+                   
+                    const res = await axiosPublic.delete(`/Agreement/${AcceptedAgreement[i]._id}`);
+                  
+                  }
+                 
+               
                if(Users?.data?.modifiedCount > 0){
                    AllUserRefetch();
                    toast.success(`${user.name} is now a user`)

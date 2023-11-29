@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
-import ApartmentCard from '../Components/ApartmentCard'
+
 
 import ComponentTitle from '../Components/ComponentTitle';
 import Spinner from '../Components/Spinner';
 import { AuthContext } from '../Components/AuthProvider';
+import ApartmentCard from '../Components/ApartmentCard';
 
 export default function Apartment() {
 
- const {AllApartment,AllApartmentLoading,loading}=useContext(AuthContext)
+ const {AllApartment,AllApartmentLoading,loading,AllApartmentRefetch}=useContext(AuthContext)
+ AllApartmentRefetch()
 
 const [AllData, setAllData]=useState();
 const[items, setItems]=useState();
@@ -16,20 +18,25 @@ const[numPages,setNumPages]=useState()
 const[currentPage, setCurrentPage]=useState(1);
 const[typedData,setTypedData]=useState(AllApartment);
 
-const auto=()=>{useEffect(() => {
+useEffect(() => {
   setTypedData(AllApartment);
   setAllData(AllApartment);
   setItems(AllApartment.length);
   setNumPages([1]);
-}, [AllApartment])}
+}, [AllApartment])
 
-auto()
+
+
+
+
+
+
 
 
 
 const handleChange =(e)=>
 {
-  if(e.target.value>70000)
+  if(e.target.value>=70000)
  {
 const findData =  AllApartment.filter(item => item.rent >= e.target.value);
    setTypedData(findData);
@@ -135,7 +142,8 @@ AllApartmentLoading || loading ? <Spinner></Spinner>:
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
 {
   AllData?.map((Apartment, index) => (
-  <ApartmentCard key={index} Apartment={Apartment}></ApartmentCard>
+    <ApartmentCard key={index} Apartment={Apartment}></ApartmentCard>
+    
   ))
   }
 </div>

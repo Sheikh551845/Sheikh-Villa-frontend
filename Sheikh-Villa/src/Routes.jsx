@@ -15,6 +15,11 @@ import ManageAgreement from "./Components/Dashbord/ManageAgreements";
 import ManageMember from "./Components/Dashbord/ManageMember";
 import MakeAnnouncement from "./Components/Dashbord/MakeAnnouncement";
 import ManageCoupon from "./Components/Dashbord/ManageCoupon";
+import UserPrivate from "./Components/Dashbord/UserPrivate";
+import AdminPrivate from "./Components/Dashbord/AdminPrivate";
+import MemberProfile from "./Components/Dashbord/MemberProfile";
+import MemberPrivate from "./Components/Dashbord/MemberPrivate";
+
 
 export const router = createBrowserRouter([
     {
@@ -50,38 +55,60 @@ export const router = createBrowserRouter([
     {
 
       path: "/Dashboard",
-      element: <DashHome></DashHome>
+      element: 
+        <DashHome></DashHome>
+     
     },
     {path: "Announcements",
      element: <Announcements></Announcements>
+    
     },
     
    
     {path: "UserProfile",
-      element: <UserProfile></UserProfile>
+      element: <UserPrivate>
+        <UserProfile></UserProfile>
+      </UserPrivate> 
     },
 
     {path: "AdminProfile",
-    element: <AdminProfile></AdminProfile>
+    element: <AdminPrivate>
+      <AdminProfile></AdminProfile>
+    </AdminPrivate> 
   },
 
   {path: "ManageAgreement",
-  element: <ManageAgreement></ManageAgreement>
+  element: <AdminPrivate>
+    <ManageAgreement></ManageAgreement>
+  </AdminPrivate> 
   },
 
   {path: "ManageMember",
-  element: <ManageMember></ManageMember>
+  element: <AdminPrivate>
+    <ManageMember></ManageMember>
+  </AdminPrivate> 
   },
 
   {path: "MakeAnnouncement",
-  element: <MakeAnnouncement></MakeAnnouncement>
+  element: <AdminPrivate>
+    <MakeAnnouncement></MakeAnnouncement>
+  </AdminPrivate> 
   },
 
   
   {path: "ManageCoupon",
-  element: <ManageCoupon></ManageCoupon>
+  element: <AdminPrivate>
+    <ManageCoupon></ManageCoupon>
+  </AdminPrivate> 
   },
-
+  
+  {path: "MemberProfile",
+  element:<MemberPrivate>
+    <MemberProfile></MemberProfile>
+  </MemberPrivate>
+   
+  
+},
 
     
 

@@ -13,13 +13,21 @@ import { toast } from "react-toastify";
 
 const ManageAgreement = () => {
     
-const{AllUserRefetch,AllUser,AllAgreement,AgreementRefetch}=useContext(AuthContext)
+const{AllUserRefetch,AllUser,AllAgreement,AgreementRefetch,AllApartment,AllApartmentRefetch}=useContext(AuthContext)
 
 const PendingAgreement = AllAgreement?.filter(data => data.status== 'pending');
+const dateObject = new Date();
+
+const year = dateObject.getFullYear();
+const month = String(dateObject.getMonth() + 1).padStart(2, '0'); 
+const day = String(dateObject.getDate()).padStart(2, '0');
+
+const currentDate = `${year}-${month}-${day}`;
    
     const axiosPublic = useAxiosPublic();
 
     const handleDeleteItem = (Agreement) => {
+       
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -48,10 +56,21 @@ const PendingAgreement = AllAgreement?.filter(data => data.status== 'pending');
     const handleUpdate = async (Agreement) => {
 
         const findA = AllUser?.find(User => User.email == Agreement.UserEmail);
+        const Apartment = AllApartment?.find(data => data.apartment_no== Agreement.apartment_no);
+      console.log(currentDate)
+        const Agreements =  await axiosPublic.patch(`/AcceptAgreement/${Agreement._id}`, {"status":"accepted", "Accept_date":`${currentDate}`});
 
-        const Agreements =  await axiosPublic.patch(`/Agreement/${Agreement._id}`, {"status":"accepted"});
-        console.log(Agreements)
-        if(Agreements?.data.modifiedCount > 0){
+      
+                   
+            const Apart = await axiosPublic.patch(`/Apartment/${Apartment._id}`, {"status":"rented"});
+          
+          
+
+       
+       
+        if(Agreements?.data.modifiedCount > 0  && Apart?.data.modifiedCount > 0){
+           
+            AllApartmentRefetch();
             AgreementRefetch();
             Swal.fire('Accepted', ' Agreement has been accepted.', 'success');
         }
@@ -62,7 +81,8 @@ const PendingAgreement = AllAgreement?.filter(data => data.status== 'pending');
         const Users = await axiosPublic.patch(`/User/${findA._id}`, {"role":"member"});
         console.log(Users)
        if(Users?.data?.modifiedCount > 0){
-           AllUserRefetch();
+           
+        AllUserRefetch();
            toast.success(`${findA.name} is now a member`)
           
        }

@@ -5,13 +5,11 @@ import DashNav from './DashNav'
 
 export default function DashDataLoading({children}) {
 
-    const {loading,AgreementLoading,AllApartmentLoading,AllUserLoading,theme,AllAnnouncementLoading,AllCouponLoading}=useContext(AuthContext)
+    const {loading,AgreementLoading,AllApartmentLoading,AllUserLoading,theme,AllAnnouncementLoading,AllCouponLoading,AllCouponRefetch,AllAnnouncementRefetch,AllUserRefetch,AllApartmentRefetch,AgreementRefetch}=useContext(AuthContext)
 
  
 
    
-   
-
 
     if (loading || AgreementLoading || AllApartmentLoading || AllUserLoading || AllAnnouncementLoading||AllCouponLoading) 
     return <div >
@@ -20,6 +18,12 @@ export default function DashDataLoading({children}) {
         <HashLoader size={80} color="#36d7b7" /></div>
       </div>
     }
+     AllCouponRefetch()
+   
+   AllAnnouncementRefetch()
+   AllUserRefetch()
+   AllApartmentRefetch()
+   AgreementRefetch()
  
 </div>
 

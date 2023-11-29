@@ -8,9 +8,12 @@ import DashContentFormat from './DashContentFormat';
 
 export default function ManageCoupon() {
     const{user,AllApartment, AllCoupon,AllCouponRefetch}=useContext(AuthContext)
+    AllCouponRefetch()
     const [show, setshow_modal_X] = useState(true);
     const axiosPublic = useAxiosPublic();
     console.log(AllCoupon)
+    const IdleApartments = AllApartment?.filter(data => data.status== "idle");
+    console.log(IdleApartments)
 
     const [formData, setFormData] = useState({});
  
@@ -181,8 +184,8 @@ export default function ManageCoupon() {
 
             >
   {
-  AllApartment?.map((Apartment, index) => (
-    <option value={Apartment.apartment_no} key={index}>Apartment {index+1}</option>
+  IdleApartments?.map((Apartment, index) => (
+    <option value={Apartment.apartment_no} key={index}>{Apartment.apartment_no}</option>
   
   ))
   }

@@ -16,21 +16,18 @@ export default function Home() {
      <div className="w-full ">
      <AboutUs></AboutUs>
      </div>
-     
-     <div className="w-full "> 
-     <ComponentTitle Title={"Our Location"}></ComponentTitle>
-     </div>
-
-     <div className="w-full "> 
+     <div className="w-full mx-auto "> 
      <ComponentTitle Title={"Offers"}></ComponentTitle>
      <Coupons></Coupons>
      </div>
+     
 
      <div className="w-full ">
+     <ComponentTitle Title={"Our Location"}></ComponentTitle>
     <Location></Location>
     </div>
 
-   
+  
 
     
     </div>

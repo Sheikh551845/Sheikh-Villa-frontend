@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 import { RiCoupon3Line } from "react-icons/ri";
 import DashDataLoading from './DashDataLoding';
+import { MdPayment } from "react-icons/md";
+import { GiTakeMyMoney } from "react-icons/gi";
 
 export default function DashNav() {
     const { user,AllUser}=useContext(AuthContext)
@@ -50,6 +52,41 @@ export default function DashNav() {
                       
                    </div>
                }
+
+
+
+{
+                   CurrentLogged?.role=='member'&&
+                   <div className="mt-3 flex flex-col justify-start items-center  pl-4 w-full pb-5 gap-4">
+                  
+                   <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/MemberProfile")}>
+                          <FaUser className="text-[12px] md:text-lg lg:text-lg "></FaUser>
+                           <p className="leading-4 text-[12px] md:text-lg lg:text-lg"> My Profile</p>
+                       </button>
+
+                       <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/UserProfile")}>
+                          <GiTakeMyMoney className="text-[12px] md:text-lg lg:text-lg "></GiTakeMyMoney>
+                           <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Make payment</p>
+                       </button>
+
+                       <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded " onClick={()=>navigate("/Dashboard/UserProfile")}>
+                        
+                          <MdPayment className="text-[12px] md:text-lg lg:text-lg "></MdPayment>
+                           <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Payment History</p>
+                       </button>
+   
+   
+                       <button className="flex justify-start items-center w-full  space-x-2 md:space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                          <FaBullhorn className="text-[12px] md:text-lg lg:text-lg "></FaBullhorn>
+                           <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Announcements</p>
+                       </button>
+                       
+                      
+                   </div>
+               }
+
+
+
 
 {
                    CurrentLogged?.role=='admin'&&
