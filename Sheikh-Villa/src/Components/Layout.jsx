@@ -6,12 +6,15 @@ import Footer from './Footer';
 
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
+import IsLoading from './Isloading';
 
 export default function Layout() {
     const{theme, setTheme}=useContext(AuthContext);
 
     return (
       <div>
+              <IsLoading>
+         <div>
          {
         theme ==="dark"? 
         <div className="bg-black">
@@ -35,6 +38,10 @@ export default function Layout() {
   
       }
       </div>
+      </IsLoading>
+      </div>
+    
+     
      
      
     )

@@ -5,7 +5,7 @@ import DashNav from './DashNav'
 
 export default function DashDataLoading({children}) {
 
-    const {loading,AgreementLoading,AllApartmentLoading,AllUserLoading,theme}=useContext(AuthContext)
+    const {loading,AgreementLoading,AllApartmentLoading,AllUserLoading,theme,AllAnnouncementLoading,AllCouponLoading}=useContext(AuthContext)
 
  
 
@@ -13,7 +13,7 @@ export default function DashDataLoading({children}) {
    
 
 
-    if (loading || AgreementLoading || AllApartmentLoading || AllUserLoading) 
+    if (loading || AgreementLoading || AllApartmentLoading || AllUserLoading || AllAnnouncementLoading||AllCouponLoading) 
     return <div >
     {
       theme =="dark"? <div><DashNav></DashNav> <div  className="flex justify-center items-center h-screen"><HashLoader size={80} color='white'/></div></div>:<div><DashNav></DashNav> <div className="flex justify-center items-center h-screen">

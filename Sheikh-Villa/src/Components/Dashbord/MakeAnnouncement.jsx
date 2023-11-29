@@ -108,7 +108,9 @@ export default function MakeAnnouncement() {
                 <span className="label-text text-bold text-black">Date </span>
               </label>
               <input
-                
+                 name="Date"
+                 value={formData.Date}
+                 onChange={handleChange}
                 placeholder={currentDate}
                 className="input border-black w-[15rem] md:w-96"
                 readOnly

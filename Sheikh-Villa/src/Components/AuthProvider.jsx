@@ -109,7 +109,23 @@ const {data: AllUser = [], isPending: AllUserLoading, refetch:AllUserRefetch }= 
   }
 })
 
-    
+const {data: AllAnnouncement = [], isPending: AllAnnouncementLoading, refetch:AllAnnouncementRefetch }= useQuery({
+  queryKey: ['AllAnnouncement'], 
+  queryFn: async() =>{
+      const res = await axiosPublic.get('/AllAnnouncement');
+      return res.data;
+  }
+})
+
+const {data: AllCoupon = [], isPending: AllCouponLoading, refetch:AllCouponRefetch }= useQuery({
+  queryKey: ['AllCoupon'], 
+  queryFn: async() =>{
+      const res = await axiosPublic.get('/AllCoupon');
+      return res.data;
+  }
+})
+
+    console.log(AllCoupon)
 
     
 
@@ -137,7 +153,13 @@ const {data: AllUser = [], isPending: AllUserLoading, refetch:AllUserRefetch }= 
     AllUser,
     AllUserRefetch,
     AllUserLoading,
-    currentUser
+    currentUser,
+    AllAnnouncement,
+    AllAnnouncementLoading,
+    AllAnnouncementRefetch,
+    AllCoupon,
+    AllCouponLoading,
+    AllCouponRefetch
    
   }
  

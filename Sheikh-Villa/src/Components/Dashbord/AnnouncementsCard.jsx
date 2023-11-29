@@ -3,8 +3,9 @@ import DashContentFormat from './DashContentFormat'
 import { AuthContext } from '../AuthProvider'
 import { FaBullhorn } from 'react-icons/fa6'
 
-export default function AnnouncementsCard() {
+export default function AnnouncementsCard({Announcement}) {
     const{user}=useContext(AuthContext)
+    console.log(Announcement.Date)
     return (
 
         
@@ -16,14 +17,20 @@ export default function AnnouncementsCard() {
     
          
     <div className="card-body">
-    <div> <FaBullhorn className="text-2xl font-bold"></FaBullhorn></div>
-      <div className='flex flex-wrap gap-3 items-center justify-start pt-10 '>
+    <div className='flex justify-between items-center'> <FaBullhorn className="text-2xl font-bold text-green-600"></FaBullhorn>
+    <div>Date: {Announcement.Date}</div>
+    </div>
+      <div className='flex flex-col gap-3 justify-start pt-10 '>
         
-       
-      <h2 className="text-lg font-bold">
-        Announcement:
+       <div>
+       <h2 className="text-lg ">
+       <span className='font-bold '> Announcement Title:</span>  {Announcement.Title}
       </h2>
-      <p className='text-normal pb-32 pt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, sed tenetur repellendus sequi similique, praesentium fugit esse optio, voluptatibus commodi earum maiores. Odio suscipit ex, voluptates reprehenderit quod temporibus asperiores.</p>
+       </div>
+      <div>
+      <p className='text-normal pb-28 p-2 border-2 '>{Announcement.Announcement}</p>
+      </div>
+      
       </div>
       
   

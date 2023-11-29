@@ -13,7 +13,7 @@ export default function DashNav() {
   
     const CurrentLogged = AllUser?.find(data => data.email== user.email);
 
-    console.log(CurrentLogged)
+  
 
     return (
         <DashDataLoading>
@@ -75,7 +75,7 @@ export default function DashNav() {
                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Agreement Requests</p>
                        </button>
 
-                       <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/Announcements")}>
+                       <button className="flex justify-start items-center w-full  space-x-1 md:space-x-3 focus:outline-none text-white focus:text-indigo-400   rounded "  onClick={()=>navigate("/Dashboard/ManageCoupon")}>
                           <RiCoupon3Line className="text-[12px] md:text-lg lg:text-lg "></RiCoupon3Line>
                            <p className="leading-4 text-[12px] md:text-lg lg:text-lg">Manage Coupons
 </p>
